@@ -505,6 +505,7 @@ export default Backbone.View.extend({
     if (toRequire) {
       stylable =
         !target ||
+        trg.cid === this.getTarget().cid ||
         (stylableReq &&
           (stylableReq.indexOf(id) >= 0 || stylableReq.indexOf(property) >= 0));
     }
