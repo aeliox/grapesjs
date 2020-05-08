@@ -489,7 +489,8 @@ export default Backbone.View.extend({
    * @return {Boolean}
    */
   isTargetStylable(target) {
-    const trg = target || this.getTarget();
+    const propTrg = this.getTarget();
+    const trg = target || propTrg;
     const model = this.model;
     const id = model.get('id');
     const property = model.get('property');
@@ -516,8 +517,7 @@ export default Backbone.View.extend({
     // Check if the property is available only if requested
     if (toRequire) {
       stylable =
-        !target ||
-        trg.cid === this.getTarget().cid ||
+        !target || trg.cid === propTrg.cid ||
         (stylableReq &&
           (stylableReq.indexOf(id) >= 0 || stylableReq.indexOf(property) >= 0));
     }
